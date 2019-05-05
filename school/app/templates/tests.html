@@ -1,0 +1,36 @@
+{% include "header.html" %}
+
+    <div class="container">
+      <div class="starter-template">
+        <h1>Приветствуем на школьной площадке</h1>
+        <p class="lead">Ниже представлен список тестов</p>
+      </div>
+      <table class="table table-hover table-success">
+
+  <thead>
+    <tr>
+      <th scope="col">Дата</th>
+      <th scope="col">Предмет</th>
+      <th scope="col">Учитель</th>
+      <th scope="col">Уникальный ИД</th>
+    </tr>
+  </thead>
+  {% for th in ths %}
+  <tbody class="rowlink">
+    <tr onclick="window.location='/test/{{ th.unq_id }}';">
+        <td>{{ th.timestamp.strftime("%d.%m.%Y") }}</td>
+        <td>{{ th.subject }}</td>
+        <td>{{ th.teacher }}</td>
+        <td>{{ th.unq_id }}</td>
+  </tr>
+
+  </tbody>
+  {% endfor %}
+    </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.js"></script>
+  </body>
+</html>

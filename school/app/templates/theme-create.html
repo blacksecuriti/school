@@ -1,0 +1,56 @@
+﻿{% include "header.html" %}
+<div class="container-fluid h-100">
+    <div class="row align-items-center h-100">
+        <div class="col-sm-12">
+            <div class="row justify-content-center">
+                <div class="col-4 text-center">
+		<form method="post">
+			<input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+			<br>
+			<input type="text" id="login" class="form-control forms-pixs" name="Name" placeholder="Имя" required autofocus>
+
+			<input type="text" id="login" class="form-control forms-pixs" name="Sername" placeholder="Фамилия" required autofocus>
+			<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="num">Класс</label>
+  </div>
+  <select name="num" class="custom-select" id="num">
+    <option selected>Choose...</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+	<option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+	<option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+	<option value="10">10</option>
+    <option value="11">11</option>
+  </select>
+</div>
+			<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="liter">Буква</label>
+  </div>
+  <select name="liter" class="custom-select" id="liter">
+    <option selected>Choose...</option>
+    <option value="а">а</option>
+    <option value="б">б</option>
+    <option value="в">в</option>
+	<option value="г">г</option>
+    <option value="д">д</option>
+  </select>
+</div>
+			<button id="add" name="add" class="btn btn-lg btn-primary btn-block btn-success" type="submit">Добавить</button>
+	</form>
+	</div>
+</div>
+</div>
+</div>
+	</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.js"></script>
+  </body>
+</html>

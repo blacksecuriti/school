@@ -1,0 +1,30 @@
+{% include "header.html" %}
+	
+    <div class="container">
+     <form class="form-signin" method="post">
+	  <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+      <h1 class="h3 mb-3 font-weight-normal">Вход</h1>
+      <div class="row col-5">
+        <label for="Username" class="sr-only forms-pixs">Username</label>
+        <input type="text" id="login" class="form-control forms-pixs" name="login" placeholder="Username" required autofocus>
+
+
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="password" class="form-control forms-pixs" name="password" placeholder="Password" required>
+
+        {% if alert == 1 %}
+        <div class="alert alert-danger" role="alert">
+           Не правильный логин или пароль!
+        </div>
+        {% endif %}
+
+        <button id="login" name="login" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </div>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </form>
+  </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.js"></script>
+  </body>
+</html>

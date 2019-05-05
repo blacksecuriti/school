@@ -1,0 +1,87 @@
+{% include "header.html" %}
+
+    <div class="container">
+        {% if current_user.is_authenticated %}
+        <h3 class="forms-pixsxs">Настройки пользователя {{current_user.username}}</h3>
+          <div class="row">
+            <div class="col-sm-4">
+              <h6>Cменить пароль:</h6>
+          <form method="POST">
+            <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+          <label for="inputPassword1" class="col-form-label">Старый пароль</label>
+            <input type="password" class="form-control" id="oldPassword" name="oldpass" placeholder="Старый пароль">
+
+          <label for="inputPassword2" class="col-form-label">Новый пароль</label>
+            <input type="password" class="form-control " id="newpass1" name="newpass1" placeholder="Новый пароль">
+
+          <label for="inputPasswor3" class="col-form-label">Повторите новый пароль</label>
+              <input type="password" class="form-control" id="newpass2" name="newpass2" placeholder="Поаторите новый пароль">
+            <button class="btn btn-primary btn-block forms-pixs btn-dark" name="pass_chg" type="submit">Сменить пароль</button>
+            {% if alert == 2 %}
+              <div class="alert alert-danger forms-pixsxs" role="alert">
+                Неверный старый пароль!
+              </div>
+              {% endif %}
+              {% if alert == 3 %}
+              <div class="alert alert-danger forms-pixsxs" role="alert">
+                Пароли не совпадают!
+              </div>
+              {% endif %}
+          </form>
+          </div>
+            <div class="col-sm-4">
+              <h6>Сменить почту:</h6>
+              <form method="POST">
+                <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+              <label for="inputMail1" class="col-auto col-form-label">Старая почта</label>
+            <input type="text" class="form-control" id="oldMail" name="oldmail" placeholder="Старая почта">
+
+          <label for="inputMail2" class="col-auto col-form-label">Новая почта</label>
+            <input type="text" class="form-control " id="newMail1" name="newmail1" placeholder="Новая почта">
+
+          <label for="inputMail3" class="col-auto col-form-label" >Повторите новую почту</label>
+            <input type="text" class="form-control" id="newMail2" name="newmail2" placeholder="Повторите новую почту">
+                        <button class="btn btn-primary btn-block forms-pixs btn-dark" name="email_chg" type="submit">Сменить почту</button>
+                                      {% if alert == 6 %}
+              <div class="alert alert-danger forms-pixsxs" role="alert">
+                Данная почта занята!
+              </div>
+              {% endif %}
+                </form>
+                {% if alert == 4 %}
+              <div class="alert alert-danger forms-pixsxs" role="alert">
+                Неверная старая почта!
+              </div>
+              {% endif %}
+              {% if alert == 5 %}
+              <div class="alert alert-danger forms-pixsxs" role="alert">
+                Почты не совпадают!
+              </div>
+              {% endif %}
+      </div>
+      <div class="col-sm-4">
+        <h6>Сменить логин:</h6>
+        <form method="POST">
+          <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+          <label for="inputUser" class="col-auto col-form-label">Новый логин</label>
+            <input type="text" class="form-control" id="User" name="newlog" placeholder="Новый логин">
+          <button class="btn btn-primary btn-block forms-pixs btn-dark" name="log_chg" type="submit">Сменить логин</button>
+                        {% if alert == 7 %}
+              <div class="alert alert-danger forms-pixsxs" role="alert">
+                Данный логин уже занят!
+              </div>
+              {% endif %}
+      </form>
+      </div>
+     {% endif %}
+     {% if not current_user.is_authenticated %}
+        <div class="alert alert-danger forms-pixs" role="alert">
+           Вы не имеете доступ к этой странице!
+        </div>
+              {% endif %}
+     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.js"></script>
+  </body>
+</html>

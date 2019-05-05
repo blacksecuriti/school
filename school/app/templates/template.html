@@ -1,0 +1,45 @@
+﻿{% include "header.html" %}
+
+
+      <div class="container">
+              <div class="starter-template">
+        <h1>Приветствуем на нашем борде</h1>
+        <p class="lead">Здесь вы можете общаться на рзличные тематики<br> Ниже можно посмотреть все доступные обсуждения</p>
+      </div>
+      <table class="table table-hover table-dark">
+		
+		<table class="table table-hover table-success">
+
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Имя</th>
+      <th scope="col">Фамилия</th>
+      <th scope="col">Класс</th>
+    </tr>
+  </thead>
+  {% for th in ths %}
+  <tbody>
+    <tr>
+      <td>{{ th.id }}</td>
+      <td>{{ th.Name }}</td>
+      <td>{{ th.Sername }}</td>
+      <td>{{ th.scClass }}</td>
+	  <td>
+			<input class="form-control forms-pixsxs" type="text" placeholder="res" id ="result">
+			<input name="s" type=hidden value="{{ csrf_token() }}">
+		</div>
+	</td>
+    </tr>
+  </tbody>
+  {% endfor %}
+
+</table>
+	</div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>
+  </body>
+</html>

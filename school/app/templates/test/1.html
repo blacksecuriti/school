@@ -1,0 +1,89 @@
+﻿{% include "header.html" %}
+
+
+    <div class="container">
+        <h2>Результаты теста</h2>
+        <p class="lead">Предмет:{{ ths[0].subject }} | Учитель:{{ ths[0].teacher }} | Дата:{{ ths[0].timestamp.strftime("%d.%m.%Y") }}</p>
+        <div class="col">
+        <h6> Средний балл по тесту: {{ mid }} </h6>
+      {% if asd == 0 %}  <!-- ↓ -->
+      <div class="row">
+        <div class="col-sm-9">
+        <form method="post">
+            <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+            <button id="show" name="show" class="btn btn-success btn-block" type="submit">Показать подробные результаты</button>
+          </form>
+        </div>
+        <div class="col-sm-3">
+          <form action="/del_test/{{ths[0].unq_id}}">
+            <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+            <button href="/del_test/{{ ths.unq_id }}" name="del_btn" class="btn btn-primary btn-success btn-block">Удалить тест</button>
+          </form>        
+        </div>
+    </div>
+      </div>
+      <table class="table table-hover table-success">
+      <thead>
+        <tr>
+          <th scope="col">Ученик</th>
+          <th scope="col">Класс</th>
+          <th scope="col">Сумма баллов</th>
+          <th scope="col">Оценка за тест</th>
+        </tr>
+      </thead>
+      {% for th in ths %}
+      <tbody>
+        <tr>
+          <td>{{ th.author.Name + ' ' +  th.author.Sername}}</td>
+          <td>{{ th.author.scClass}}</td>
+          <td>{{ th.anses|list|map('int')|list|sum }}</td>
+          <td>{{ th.result }}</td>
+        </tr>
+      </tbody>
+      {% endfor %}
+      {% endif %}  <!-- ↑ -->
+
+      {% if asd == 1 %}  <!-- ↓ -->
+      <div class="row">
+        <div class="col-sm-9">
+        <form method="post">
+            <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+            <button id="unshow" name="unshow" class="btn btn-success btn-block" type="submit">Скрыть подробные результаты</button>
+          </form>
+        </div>
+        <div class="col-sm-3">
+          <form action="/del_test{{ths[0].unq_id}}">
+            <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+            <button href="/del_test/{{ ths.unq_id }}" name="del_btn" class="btn btn-primary btn-success btn-block">Удалить тест</button>
+          </form>
+        </div>
+    </div>
+      </div>
+              <table class="table table-hover table-success">
+  <thead>
+    <tr>
+      <th scope="col">Фамилия Имя</th>
+      {% for i in range(n) %}
+      <th scope="col">№ {{i+1}}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  {% for th in ths %}
+  <tbody>
+    <tr>
+      <td>{{ th.author.Name + ' ' +  th.author.Sername }}</td>
+      {% for i in th.anses|list %}
+      <td>{{i}}</td>
+      {% endfor %}
+    </tr>
+  </tbody>
+  {% endfor %}
+
+</table>
+      {% endif %}  <!-- ↑ -->
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.js"></script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+{% include "header.html" %}
+
+
+      <div class="container">
+              <div class="starter-template">
+        <h1>Приветствуем на школьной площадке</h1>
+        <p class="lead">Ниже представлен список учеников школы 104</p>
+      </div>
+
+      <table class="table table-hover table-success">
+  <form method="post">
+  <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+  <thead>
+    <tr>
+      <th scope="col">Фамилия Имя</th>
+      {% for i in range(n) %}
+      <th scope="col">№ {{i+1}}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+  {% for th in ths %}
+    <tr>
+      <td>{{ th.author.Name + ' ' +  th.author.Sername }}</td>
+      {% for i in range(n) %}
+      <td>
+            <select name="ans{{ th.id }}[]" class="custom-select" id="ans{{ th.id }}[]" autofocus>
+                <option selected value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select>
+      </td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+  </tbody>
+
+</table>
+  <div class="row">
+    <div class="col">
+      <button id="send" name="send" class="btn btn-lg btn-primary btn-block btn-success forms-pixsxs" type="submit" autofocus>Send</button>
+    </div>
+  </div>
+  </form>
+
+</div>
+
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.js"></script>
+  </body>
+</html>

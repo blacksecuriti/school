@@ -1,0 +1,49 @@
+  <!DOCTYPE html>
+<html>
+  <head>
+    <title>SCHOOL 104</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/css/site_styles.css" rel="stylesheet" media="screen">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-success">
+      <a class="navbar-brand" href="#">SCHOOL 104</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample03">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/index">Список учеников </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/tests">Тесты </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/add_student">Добавить ученика </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/add_test">Добавить тест </a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto top-menu">
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ current_user.username }}</a>
+            <div class="dropdown-menu p-1" aria-labelledby="dropdown03">
+              <h4>{{ current_user.username }}</h4>
+              <form method="POST">
+                <a type="button" href="/logout" name="logout_btn" class="btn btn-primary btn-success">Выйти</a>
+                <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+              </form>
+
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
